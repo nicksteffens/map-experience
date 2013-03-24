@@ -1,0 +1,26 @@
+DOCUMENTATION
+
+Overlays:
+https://developers.google.com/maps/documentation/javascript/overlays
+
+  See for map markers and info windows.
+
+
+  For Introduction:
+  Use: Custom overlays to get the look and feel that we want
+
+Eventlisteners:
+https://developers.google.com/maps/documentation/javascript/events
+
+  See of handling events.
+
+
+
+
+
+
+EIGHT REGIONS OF ENDEMISM
+
+  Need locations for this.
+
+
