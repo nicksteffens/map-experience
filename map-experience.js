@@ -32,7 +32,8 @@ Experience = {
     Experience.introduction = [];
     var intro = Utility.createIntro(Content.introduction);
     Utility.infoWin.openWindow(Experience.introduction[0], Experience.map);
-    Listeners.google.domReady(Experience.introduction[0], Listeners.introduction(Experience.introduction[0]));
+    // Listeners.google.domReady(Experience.introduction[0], Listeners.introduction(Experience.introduction[0]));
+    Listeners.introduction(Experience.introduction[0]);
   }
 
 };
@@ -42,31 +43,21 @@ Experience = {
 Listeners = {
 
   introduction: function(obj) {
-    $('.screen a.next').on('click', function(e){
-      e.preventDefault();
-      var nextScreen = parseInt($(this).attr('href').slice(1));
-      if(nextScreen > Experience.introduction.length) {
-        console.log('has next');
-        Listeners.google.removedListener(obj);
-        Utility.infoWin.closeWindow(obj);
-        Utility.infoWin.openWindow(Experience.introduction[nextScreen], Experience.map);
-        Listeners.google.domReady(Experience.introduction[nextScreen], Listeners.introduction(Experience.introduction[nextScreen]));
-      }
+    google.maps.event.addListener(obj, 'domready', function(){
+      $('.screen a.next').on('click', function(e){
+        e.preventDefault();
+        var nextScreen = parseInt($(this).attr('href').slice(1));
+        if(nextScreen < Experience.introduction.length) {
+          // console.log('has next');
+          obj.close();
+          Utility.infoWin.openWindow(Experience.introduction[nextScreen], Experience.map);
+          Listeners.introduction(Experience.introduction[nextScreen]);
+        }
+      });
     });
 
-  },
 
-  google: {
-    removedListener: function(obj) {
-      google.maps.event.removeListener(obj);
-    },
-
-    domReady: function(obj, callback) {
-      console.log('domReady %o', obj, callback);
-      google.maps.event.addListener(obj, 'domready', callback);
-    }
   }
-
 
 };
 
@@ -120,12 +111,14 @@ Utility = {
 
 
   createIntro: function(obj) {
+    // ToDo:
+    // 1. Add Type Checks
     $.each(obj, function(i){
         if(this.position === null) this.position = Experience.startingPoint;
         Experience.introduction.push( Utility.infoWin.newWindow('<div class="screen" data-screen-number="'+i+'" data-type="'+this.type+'"><p>'+this.description+'</p><a href="#'+i+'" class="next">Next</a></div>', this.position));
     });
 
-    console.log(Experience.introduction);
+    // console.log(Experience.introduction);
   }
 
 };
