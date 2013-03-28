@@ -1,18 +1,23 @@
 Experience = {
+  // empty vars
+  introduction: [],
+
   // initialize
   initialize: function() {
     Experience.setVars();
-    // Experience.setMarkers();
-    Experience.setIntro();
+    Experience.createIntro();
+    Utility.debug();
   },
 
   setVars: function() {
     // set starting point
-    Experience.startingPoint = Utility.newLatLng(-1.993006, -67.286072);
+    var initialPos = Utility.getDataAttr($('#intro'), 'position');
+    initialPos = initialPos.split(',');
+    Experience.startingPoint = Utility.newLatLng(initialPos[0], initialPos[1]);
 
     // set options
     Experience.mapOptions = {
-      zoom: 5,
+      zoom: parseInt(Utility.getDataAttr($('#intro'), 'zoom')),
       center: Experience.startingPoint,
       // UI specific stuff
       disableDefaultUI: true,
@@ -24,52 +29,236 @@ Experience = {
     Experience.map = Utility.newMap('map-canvas', Experience.mapOptions);
   },
 
-  setMarkers: function() {
-  },
+  createIntro: function() {
+    var $intro = $('#intro'),
+        $section = $intro.children('.section');
 
-  // sets the first window to be open
-  setIntro: function() {
-    Experience.introduction = [];
-    var intro = Utility.createIntro(Content.introduction);
-    Utility.infoWin.openWindow(Experience.introduction[0], Experience.map);
-    // Listeners.google.domReady(Experience.introduction[0], Listeners.introduction(Experience.introduction[0]));
-    Listeners.introduction(Experience.introduction[0]);
+    // makes array of DOM elements
+    $section = $section.toArray();
+
+    View.overlayContent($section);
+
   }
 
 };
 
 
 // eventListeners
-Listeners = {
-
-  introduction: function(obj) {
-    google.maps.event.addListener(obj, 'domready', function(){
-      $('.screen a.next').on('click', function(e){
+Controllers = {
+  closeOverlay: function(){
+    $('#closeOverlay').on({
+      click: function(e) {
         e.preventDefault();
-        var nextScreen = parseInt($(this).attr('href').slice(1));
-        if(nextScreen < Experience.introduction.length) {
-          // console.log('has next');
-          obj.close();
-          Utility.infoWin.openWindow(Experience.introduction[nextScreen], Experience.map);
-          Listeners.introduction(Experience.introduction[nextScreen]);
-        }
-      });
+        View.removeOverlay();
+      }
     });
 
+  },
 
+  nextSection: function() {
+    $('.next').on({
+      click: function(e) {
+        e.preventDefault();
+        $('.section.active').removeClass('active');
+        var nextPage = parseInt($(this).attr('href').slice('1'));
+        $('.section').eq(nextPage).addClass('active');
+
+        Utility.checkMapChanges($('.section').eq(nextPage));
+
+      }
+    });
+  },
+
+  google: {
+    clickMarker: function(marker) {
+      google.maps.event.addListener(marker, 'click', function() {
+        Utility.marker.getAction(marker.title);
+      });
+    }
+  },
+
+  closeMediaViewer: function() {
+    $('#media-viewer .close').on({
+      click: function(e) {
+        e.preventDefault();
+        $('#media-viewer').remove();
+      }
+    });
+  },
+
+  closeSpeciesViewer: function() {
+    $('#species-viewer .close').on({
+      click: function(e) {
+        e.preventDefault();
+        $('#species-viewer').remove();
+      }
+    });
+  },
+
+  speciesMedia: function() {
+    $('#species-viewer .media a').on({
+      click: function(e) {
+        e.preventDefault();
+        var type = $(this).attr('class'),
+            player = Utility.getDataAttr($(this), 'player'),
+            url = $(this).attr('href');
+
+        switch (type) {
+          case 'audio':
+            if(player === 'html5') View.attachAudioPlayer(url);
+            if(player === 'xeno') View.attachXeno(url);
+          break;
+          case 'video':
+            if(player === 'vimeo') View.attachVimeo(url);
+          break;
+          default:
+          // nothing
+        }
+      }
+    });
   }
 
 };
 
+// END Of controllers
+
+// View
+View = {
+
+  createOverlay: function() {
+    $('#map-overlay').remove();
+    var overlay = '<div id="map-overlay"><div id="overlay-content"></div></div>';
+    $('.canvas').append(overlay);
+  },
+
+  removeOverlay: function() {
+    $('#map-overlay').remove();
+  },
+
+  overlayContent: function(arr) {
+    View.createOverlay();
+    var $overlay = $('#overlay-content');
+    $.each(arr, function(){
+      var section = Utility.getDataAttr($(this), 'section'),
+          type = Utility.getDataAttr($(this), 'type'),
+          page = Utility.getDataAttr($(this), 'page');
+
+      // add section to map-overlay
+      $overlay.append($(this));
+
+      switch (section) {
+        case 'intro':
+          $(this).append('<a href="#'+page+'" title="next" class="next intro">Next</a>');
+        break;
+        default:
+      }
+    });
+    //show first child
+    $overlay.children().first().addClass('active');
+    // attach Listener
+    Controllers.nextSection();
+
+  },
+
+  createSite: function(obj) {
+    View.createOverlay();
+    var $overlay = $('#overlay-content'),
+        description = obj.children('.description'),
+        markers = obj.find('.marker');
+
+    // populate text area
+    $overlay.append(description);
+
+    // createMarkers
+    View.siteMarkers(markers);
+
+
+    // update map
+    Utility.checkMapChanges(obj);
+  },
+
+  siteMarkers: function(arr) {
+    $.each(arr, function(){
+
+       var name = $(this).find('h2').text();
+            pos = Utility.getDataAttr($(this), 'position');
+        pos = pos.split(',');
+        pos = Utility.newLatLng(pos[0], pos[1]);
+        //creates marker
+        var marker = Utility.newMarker(name, pos);
+
+        // sets listener
+        Controllers.google.clickMarker(marker);
+    });
+  },
+
+  species: function(obj) {
+    View.createSpeciesViewer();
+    // append to Species Viewer
+    $('#species-viewer').append(obj);
+    Controllers.speciesMedia();
+  },
+
+  createSpeciesViewer: function() {
+    $("#species-viewer").remove();
+    var viewer = '<div id="species-viewer"><a href="#" class="close" title="close">CLOSE</a></div>';
+    $('.canvas').append(viewer);
+    Controllers.closeSpeciesViewer();
+
+  },
+
+  zoomMap: function(lvl) {
+    if(typeof lvl == 'string') lvl = parseInt(lvl);
+    Experience.map.setZoom(lvl);
+  },
+
+  changeMapCenter: function(location) {
+    Experience.map.setCenter(location);
+  },
+
+  createMediaViewer: function() {
+    if($('#media-viewer').length < 1) {
+      var viewer = '<div id="media-viewer"><a href="#" class="close" title="close">CLOSE</a></div>';
+      $('.canvas').append(viewer);
+      Controllers.closeMediaViewer();
+    } else {
+      $('#media-viewer').empty();
+    }
+  },
+
+  attachVimeo: function(url) {
+    View.createMediaViewer();
+    var id = url.split('video/'),
+        videoId = id[1],
+        player = '<iframe src="http://player.vimeo.com/video/'+videoId+'" width="870" height="370" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+
+    $('#media-viewer').append(player);
+
+  },
+
+  attachXeno: function(id) {
+    View.createMediaViewer();
+    var player = '<iframe src="http://www.xeno-canto.org/embed.php?XC='+id+'&simple=1" scrolling="no" frameborder="0" width="170" height="58"></iframe>';
+    $('#media-viewer').append(player);
+  },
+
+  attachAudioPlayer: function(url) {
+    View.createMediaViewer();
+    var player = '<audio controls>'+
+                    '<source src="'+url+'">'+
+                    'Your Browser doesn\'t support the audio element.'+
+                  '</audio>';
+    $('#media-viewer').append(player);
+  }
+};
+// END of VIEW
+
 // utility
 Utility = {
 
-  newMarker: function(name, pos) {
-    var marker = new google.maps.Marker({
-      position: pos,
-      map: Experience.map
-    });
-    return marker;
+  newMap: function(id, opts) {
+    var map = new google.maps.Map(document.getElementById(id), opts);
+    return map;
   },
 
   newLatLng: function(lat, lng) {
@@ -77,125 +266,104 @@ Utility = {
     return pt;
   },
 
-  newMap: function(id, opts) {
-    var map = new google.maps.Map(document.getElementById(id), opts);
-    return map;
-  },
-
-  infoWin: {
-    newWindow: function(info, pos) {
-      var infowindow;
-      if(pos === null) {
-        infowindow = new google.maps.InfoWindow({
-          content: info,
-          position: Experience.startingPoint
-        });
-      } else {
-        infowindow = new google.maps.InfoWindow({
-          content: info,
-          position: pos
-        });
-      }
-      return infowindow;
-    },
-
-    openWindow: function(obj, loc) {
-      obj.open(loc);
-    },
-
-    closeWindow: function(obj) {
-      obj.close();
-    }
-
-  },
-
-
-  createIntro: function(obj) {
-    // ToDo:
-    // 1. Add Type Checks
-    $.each(obj, function(i){
-        if(this.position === null) this.position = Experience.startingPoint;
-        Experience.introduction.push( Utility.infoWin.newWindow('<div class="screen" data-screen-number="'+i+'" data-type="'+this.type+'"><p>'+this.description+'</p><a href="#'+i+'" class="next">Next</a></div>', this.position));
+  newMarker: function(name, pos) {
+    var marker = new google.maps.Marker({
+      position: pos,
+      map: Experience.map,
+      title: name
     });
-
-    // console.log(Experience.introduction);
-  }
-
-};
-
-// This contains all content relative to the Map Interactive experience. Each
-// section contains all information, images, and videos associcated with each
-// section. Sub-sections work the same as normal section and will be process
-// Map-Experience.js.
-
-// Nick Steffens <nsteffens@gmail.com>
-
-Content = {
-
-  introduction: {
-    1: {
-      description: 'Amazonia is the largest, most diverse rainforest on Earth. One tenth of the world’s plant and animal species live here—including one out of every five bird species!',
-      type: 'text',
-      position: null
-    },
-
-    2: {
-      description: 'The vast diversity of Amazonia is currently divided into eight gigantic Areas of Endemism—regions that contain groups of plants and animals found nowhere else on Earth!',
-      type: 'text',
-      position: null
-    },
-
-    3: {
-      description: 'Travel up Brazil’s Rio Japurá and its tributaries with our team to discover which birds live in a little-explored area where two Areas of Endemism meet—the Napo and the Imerí. <br/><br/>Documenting and studying bird populations along this boundary will help us define the range and evolutionary history of each species and better assess areas of unique diversity in need of protection.',
-      type: 'text',
-      position: null
-    },
-
-    4: {
-      description: 'Explore the map to view Field Museum scientist Jason Weckstein’s video journals of our experiences along the way, and take a look—and listen—to the birds we found at each of at our three study sites. <br><br>You’ll learn about the fascinating feeding and breeding habits of some Amazonian species and discover how rivers may impact their evolution.',
-      type: 'text',
-      position: null
-    },
-
-    5: {
-      type: 'markers',
-      position: null,
-      markers: {
-        1: {
-          title: 'Our Journey Begins',
-          position: [1, 2],
-          type: 'video',
-          link: 'http://vimeopro.com/fieldmuseum/amazonian-birds/video/50315674'
-        },
-
-        2: {
-          title: 'A River Village',
-          position: [2, 3],
-          type: 'video',
-          link: 'http://vimeopro.com/fieldmuseum/amazonian-birds/video/50320303'
-        },
-
-        3: {
-          title: '',
-          position: [1, 2],
-          type: 'video',
-          link: 'http://vimeopro.com/fieldmuseum/amazonian-birds/video/50320304'
-        },
-
-        4: {
-          title: 'Rio Mapari',
-          position: [1,2],
-          type: 'site'
-        }
-      }
-    }
-
+    return marker;
   },
 
-  sites: {
-    1: {},
-    2: {},
-    3: {}
+  getDataAttr: function(obj, str) {
+    var dataAttr = obj.attr('data-'+str);
+    return dataAttr;
+  },
+
+  checkMapChanges: function(obj) {
+    // check for position
+    if(obj.attr('data-position') !== undefined) {
+      var pos = Utility.getDataAttr(obj, 'position');
+      pos = pos.split(',');
+      var location = Utility.newLatLng(pos[0], pos[1]);
+      View.changeMapCenter(location);
+    }
+
+    // check for zoom
+    if(obj.attr('data-zoom') !== undefined) {
+      var zoom = Utility.getDataAttr(obj, 'zoom');
+      View.zoomMap(zoom);
+    }
+
+    // check of markers
+    if(obj.attr('data-type') === 'markers') {
+
+      $.each(obj.find('.marker'), function(){
+        var name = Utility.getDataAttr($(this), 'title'),
+            pos = Utility.getDataAttr($(this), 'position');
+        pos = pos.split(',');
+        pos = Utility.newLatLng(pos[0], pos[1]);
+        //creates marker
+        var marker = Utility.newMarker(name, pos);
+
+        // sets listener
+        Controllers.google.clickMarker(marker);
+
+      });
+    }
+  },
+
+  marker: {
+
+    getAction: function(id) {
+      var marker = $('.marker[data-title="'+id+'"]'),
+          type = Utility.getDataAttr(marker, 'marker-type');
+
+      switch (type) {
+        case 'video':
+          var video = Utility.getDataAttr(marker, 'url'),
+              player = Utility.getDataAttr(marker, 'video-player');
+          if(player === 'vimeo') View.attachVimeo(video);
+        break;
+        case 'site':
+          var siteId = Utility.getDataAttr(marker, 'site-id');
+          View.createSite($('#'+siteId));
+        break;
+        case 'species':
+          View.species(marker);
+        break;
+        default:
+        // nothing
+      }
+    }
+  },
+
+  debug: function() {
+    $('.debugger').children('button').on('click', function(e) {
+      var task = $(this).attr('class');
+
+      switch (task)
+        {
+          case 'show-overlay':
+            View.createOverlay();
+          break;
+
+          case 'close-overlay':
+            View.removeOverlay();
+          break;
+
+          case 'reset':
+            window.location.reload();
+          break;
+
+          case 'addMarker':
+            var testMarker = Utility.newMarker('test', Utility.newLatLng(-1.834293,-66.440472));
+          break;
+
+          default:
+          // do nothing
+        }
+    });
   }
 
 };
