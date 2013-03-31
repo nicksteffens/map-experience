@@ -1,6 +1,14 @@
 Experience = {
   // empty vars
   introduction: [],
+  markers: {
+    region: [],
+    sites: {
+      one: [],
+      two: [],
+      three: []
+    }
+  },
 
   // initialize
   initialize: function() {
@@ -45,24 +53,14 @@ Experience = {
 
 // eventListeners
 Controllers = {
-  // closeOverlay: function(){
-  //   $('#closeOverlay').on({
-  //     click: function(e) {
-  //       e.preventDefault();
-  //       View.removeOverlay();
-  //     }
-  //   });
-
-  // },
 
   nextSection: function() {
     $('.next').on({
       click: function(e) {
         e.preventDefault();
-        $('.section.active').removeClass('active');
+        $('.sidebar .section.active').removeClass('active');
         var nextPage = parseInt($(this).attr('href').slice('1'));
-        $('.section').eq(nextPage).addClass('active');
-
+        $('.sidebar .section').eq(nextPage).addClass('active');
         Utility.checkMapChanges($('.section').eq(nextPage));
 
       }
@@ -81,14 +79,14 @@ Controllers = {
 
         if(overlay.page !== '4' && overlay.section === 'intro') {
           // hide current
-          $('.section.active').removeClass('active');
+          $('.sidebar .section.active').removeClass('active');
 
           // remove overlay
           overlay.setMap(null);
 
           // next page
           var nextPage = parseInt(overlay.page);
-          $('.section').eq(nextPage).addClass('active');
+          $('.sidebar .section').eq(nextPage).addClass('active');
 
           //check for changes
           Utility.checkMapChanges($('.section').eq(nextPage));
@@ -100,42 +98,66 @@ Controllers = {
   },
 
   closeMediaViewer: function() {
-    $('#media-viewer .close').on({
+    $('#media .close').on({
       click: function(e) {
         e.preventDefault();
-        $('#media-viewer').remove();
+        $('#media').find('.content').remove();
+        $('#media').addClass('disabled');
+        $('.overlay-bg').addClass('disabled');
+      }
+    });
+
+    $('.overlay-bg').on({
+      click: function(e) {
+        e.preventDefault();
+        $('#media').find('.content').remove();
+        $('#media').addClass('disabled');
+        $('.overlay-bg').addClass('disabled');
       }
     });
   },
 
   closeSpeciesViewer: function() {
-    $('#species-viewer .close').on({
+    $('#species .close').on({
       click: function(e) {
         e.preventDefault();
-        $('#species-viewer').remove();
+        $("#species").addClass('disabled');
       }
     });
   },
 
   speciesMedia: function() {
-    $('#species-viewer .media a').on({
+    $('#species .video').on({
       click: function(e) {
         e.preventDefault();
-        var type = $(this).attr('class'),
-            player = Utility.getDataAttr($(this), 'player'),
-            url = $(this).attr('href');
+        var player = Utility.getDataAttr($(this), 'player'),
+            url = $(this).attr('href'),
+            title = $(this).text();
 
-        switch (type) {
-          case 'audio':
-            if(player === 'html5') View.attachAudioPlayer(url);
-            if(player === 'xeno') View.attachXeno(url);
-          break;
-          case 'video':
-            if(player === 'vimeo') View.attachVimeo(url);
-          break;
-          default:
-          // nothing
+        if(player === 'vimeo') {
+            View.attachVimeo(video, title);
         }
+
+      }
+    });
+
+    $('#species .audio').on({
+      click: function(e) {
+        e.preventDefault();
+        var player = Utility.getDataAttr($(this), 'player'),
+            url = $(this).attr('href'),
+            title = $(this).text();
+
+        if(player === 'html5') View.attachAudioPlayer(url, title);
+        if(player === 'xeno') View.attachXeno(url, title);
+      }
+    });
+  },
+
+  backToRegion: function() {
+    $('.back-to-region').on({
+      click: function() {
+        View.showRegion();
       }
     });
   }
@@ -160,22 +182,15 @@ View = {
     var $sidebar = $('.sidebar .content');
     $.each(arr, function(){
       var section = Utility.getDataAttr($(this), 'section'),
-          page = Utility.getDataAttr($(this), 'page');
+          page = Utility.getDataAttr($(this), 'page'),
+          content = $(this).clone();
 
       // add section to map-overlay
-      $sidebar.append($(this));
-
-      switch (section) {
-        case 'intro':
-          $(this).append('<a href="#'+page+'" title="next" class="next intro">Continue</a>');
-        break;
-        default:
-      }
+      $sidebar.append(content);
 
     });
-    //show first child
-    $sidebar.children().first().addClass('active');
 
+    $sidebar.find('.section:first-child').addClass('active');
     // check intro 1 for map properties
     Utility.checkMapChanges($sidebar.children().first());
     // attach Listener
@@ -184,17 +199,19 @@ View = {
   },
 
   createSite: function(obj) {
-    View.createOverlay();
-    var $overlay = $('#overlay-content'),
-        description = obj.children('.description'),
-        markers = obj.find('.marker');
+    View.emptySidebar();
+    // hide legend
+    $('.legend').addClass("disabled");
+
+    var $overlay = $('.sidebar .content'),
+        content = obj.clone(),
+        markers = obj.find('.marker').clone();
 
     // populate text area
-    $overlay.append(description);
-
+    $overlay.append(content);
+    $overlay.find('.section:first-child').addClass('active');
     // createMarkers
     View.siteMarkers(markers);
-
 
     // update map
     Utility.checkMapChanges(obj);
@@ -203,31 +220,48 @@ View = {
   siteMarkers: function(arr) {
     $.each(arr, function(){
 
-       var name = $(this).find('h2').text();
-            pos = Utility.getDataAttr($(this), 'position');
-        pos = pos.split(',');
-        pos = Utility.newLatLng(pos[0], pos[1]);
-        //creates marker
-        var marker = Utility.newMarker(name, pos);
+      var name = Utility.getDataAttr($(this), 'title');
+          pos = Utility.getDataAttr($(this), 'position'),
+          section = Utility.getDataAttr($(this).parent('.markers').parent('div'), 'section');
 
-        // sets listener
-        Controllers.google.clickMarker(marker);
+          img = Utility.getDataAttr($(this), 'marker-image');
+          pos = pos.split(',');
+          pos = Utility.newLatLng(pos[0], pos[1]);
+
+      //creates marker
+      var marker = Utility.newMarker(name, pos, img);
+
+      // push to global
+      switch (section) {
+        case 'one':
+          Experience.markers.sites.one.push(marker);
+        break;
+        case 'two':
+          Experience.markers.sites.two.push(marker);
+        break;
+        case 'three':
+          Experience.markers.sites.three.push(marker);
+        break;
+        default:
+        // do nothing
+      }
+      // sets listener
+      Controllers.google.clickMarker(marker);
     });
   },
 
   species: function(obj) {
     View.createSpeciesViewer();
     // append to Species Viewer
-    $('#species-viewer').append(obj);
+    var content = obj;
+    $('#species.overlay').append(content);
+    $('#species.overlay').removeClass('disabled');
     Controllers.speciesMedia();
+    Controllers.closeSpeciesViewer();
   },
 
   createSpeciesViewer: function() {
-    $("#species-viewer").remove();
-    var viewer = '<div id="species-viewer"><a href="#" class="close" title="close">CLOSE</a></div>';
-    $('.canvas').append(viewer);
-    Controllers.closeSpeciesViewer();
-
+    $('#species.overlay .content').remove();
   },
 
   zoomMap: function(lvl) {
@@ -240,38 +274,74 @@ View = {
   },
 
   createMediaViewer: function() {
-    if($('#media-viewer').length < 1) {
-      var viewer = '<div id="media-viewer"><a href="#" class="close" title="close">CLOSE</a></div>';
-      $('.canvas').append(viewer);
-      Controllers.closeMediaViewer();
-    } else {
-      $('#media-viewer').empty();
-    }
+    $('#media .content').remove();
+    $('#media').removeClass('disabled');
+    $('.overlay-bg').removeClass('disabled');
+    // add Listener
+    Controllers.closeMediaViewer();
   },
 
-  attachVimeo: function(url) {
+  attachVimeo: function(url, name) {
     View.createMediaViewer();
     var id = url.split('video/'),
         videoId = id[1],
-        player = '<iframe src="http://player.vimeo.com/video/'+videoId+'" width="870" height="370" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+        player = '<div class="content"><h2 class="font-blue">'+name+'</h2><iframe class="video-player" src="http://player.vimeo.com/video/'+videoId+'?autoplay=true" width="618" height="412" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>';
 
-    $('#media-viewer').append(player);
+    $('#media').append(player);
 
   },
 
-  attachXeno: function(id) {
+  attachXeno: function(id, name) {
     View.createMediaViewer();
-    var player = '<iframe src="http://www.xeno-canto.org/embed.php?XC='+id+'&simple=1" scrolling="no" frameborder="0" width="170" height="58"></iframe>';
-    $('#media-viewer').append(player);
+    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><iframe src="http://www.xeno-canto.org/embed.php?XC='+id+'&simple=1" scrolling="no" frameborder="0" width="170" height="58"></iframe></div>';
+    $('#media').append(player);
   },
 
-  attachAudioPlayer: function(url) {
+  attachAudioPlayer: function(url, name) {
     View.createMediaViewer();
-    var player = '<audio controls>'+
+    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><audio controls>'+
                     '<source src="'+url+'">'+
                     'Your Browser doesn\'t support the audio element.'+
-                  '</audio>';
-    $('#media-viewer').append(player);
+                  '</audio></div>';
+    $('#media').append(player);
+  },
+
+  showRegion: function() {
+    View.hideSites();
+    View.emptySidebar();
+
+    // hide back2 button
+    $('.back-to-region').addClass('disabled');
+
+    // show region markers
+    $.each(Experience.markers.region, function() {
+      this.setMap(Experience.map);
+    });
+
+    var content = $('#intro .section[data-page="4"]').clone();
+
+    // show region content
+    $('.sidebar .content').append(content);
+    $('.content .section').first().addClass('active');
+
+    Utility.checkMapChanges($('.content .section.active'));
+
+  },
+
+  hideSites: function() {
+    $.each(Experience.markers.sites, function() {
+      // get all points
+      $.each(this, function(){
+        this.setMap(null);
+      });
+    });
+
+    // clears out site markers
+    Experience.markers.sites = {
+      one: [],
+      two: [],
+      three: []
+    };
   }
 };
 // END of VIEW
@@ -289,11 +359,12 @@ Utility = {
     return pt;
   },
 
-  newMarker: function(name, pos) {
+  newMarker: function(name, pos, img) {
     var marker = new google.maps.Marker({
       position: pos,
       map: Experience.map,
-      title: name
+      title: name,
+      icon: 'images/'+img
     });
     return marker;
   },
@@ -323,11 +394,32 @@ Utility = {
 
       $.each(obj.find('.marker'), function(){
         var name = Utility.getDataAttr($(this), 'title'),
-            pos = Utility.getDataAttr($(this), 'position');
+            pos = Utility.getDataAttr($(this), 'position'),
+            img = Utility.getDataAttr($(this), 'marker-image'),
+            section = Utility.getDataAttr(obj, 'section');
         pos = pos.split(',');
         pos = Utility.newLatLng(pos[0], pos[1]);
+
         //creates marker
-        var marker = Utility.newMarker(name, pos);
+        var marker = Utility.newMarker(name, pos, img);
+
+        // pushes to global marker array
+        switch (section) {
+          case 'intro':
+            Experience.markers.region.push(marker);
+          break;
+          case 'site1':
+            Experience.markers.sites.one.push(marker);
+          break;
+          case 'site2':
+            Experience.markers.sites.two.push(marker);
+          break;
+          case 'site2':
+            Experience.markers.sites.three.push(marker);
+          break;
+          default:
+          // do nothing
+        }
 
         // sets listener
         Controllers.google.clickMarker(marker);
@@ -355,23 +447,44 @@ Utility = {
       Controllers.google.clickOverlay(overlay);
 
     }
+
+    // legend
+    if(obj.attr('data-type') === 'show-legend') $('.legend').removeClass('disabled');
+
+    // map type
+    if(obj.attr('data-map-type')) {
+      Experience.map.setMapTypeId(Utility.getDataAttr(obj, 'map-type'));
+    }
   },
 
   marker: {
 
     getAction: function(id) {
-      var marker = $('.marker[data-title="'+id+'"]'),
+      var marker = $('.info .marker[data-title="'+id+'"]'),
           type = Utility.getDataAttr(marker, 'marker-type');
 
       switch (type) {
         case 'video':
           var video = Utility.getDataAttr(marker, 'url'),
-              player = Utility.getDataAttr(marker, 'video-player');
-          if(player === 'vimeo') View.attachVimeo(video);
+              player = Utility.getDataAttr(marker, 'video-player'),
+              title = Utility.getDataAttr(marker, 'title');
+          if(player === 'vimeo') {
+            View.attachVimeo(video, title);
+          }
         break;
         case 'site':
           var siteId = Utility.getDataAttr(marker, 'site-id');
           View.createSite($('#'+siteId));
+
+          // hide intro markers
+          $.each(Experience.markers.region, function(){
+            this.setMap(null);
+          });
+
+          $('.back-to-region').removeClass('disabled');
+
+          Controllers.backToRegion();
+
         break;
         case 'species':
           View.species(marker);
@@ -380,34 +493,6 @@ Utility = {
         // nothing
       }
     }
-  },
-
-  debug: function() {
-    $('.debugger').children('button').on('click', function(e) {
-      var task = $(this).attr('class');
-
-      switch (task)
-        {
-          case 'show-overlay':
-            View.createOverlay();
-          break;
-
-          case 'close-overlay':
-            View.removeOverlay();
-          break;
-
-          case 'reset':
-            window.location.reload();
-          break;
-
-          case 'addMarker':
-            var testMarker = Utility.newMarker('test', Utility.newLatLng(-1.834293,-66.440472));
-          break;
-
-          default:
-          // do nothing
-        }
-    });
   }
 
 };
