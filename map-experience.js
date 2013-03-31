@@ -6,7 +6,7 @@ Experience = {
   initialize: function() {
     Experience.setVars();
     Experience.createIntro();
-    Utility.debug();
+    // Utility.debug();
   },
 
   setVars: function() {
@@ -45,15 +45,15 @@ Experience = {
 
 // eventListeners
 Controllers = {
-  closeOverlay: function(){
-    $('#closeOverlay').on({
-      click: function(e) {
-        e.preventDefault();
-        View.removeOverlay();
-      }
-    });
+  // closeOverlay: function(){
+  //   $('#closeOverlay').on({
+  //     click: function(e) {
+  //       e.preventDefault();
+  //       View.removeOverlay();
+  //     }
+  //   });
 
-  },
+  // },
 
   nextSection: function() {
     $('.next').on({
@@ -73,6 +73,28 @@ Controllers = {
     clickMarker: function(marker) {
       google.maps.event.addListener(marker, 'click', function() {
         Utility.marker.getAction(marker.title);
+      });
+    },
+
+    clickOverlay: function(overlay) {
+      google.maps.event.addListener(overlay, 'click', function() {
+
+        if(overlay.page !== '4' && overlay.section === 'intro') {
+          // hide current
+          $('.section.active').removeClass('active');
+
+          // remove overlay
+          overlay.setMap(null);
+
+          // next page
+          var nextPage = parseInt(overlay.page);
+          $('.section').eq(nextPage).addClass('active');
+
+          //check for changes
+          Utility.checkMapChanges($('.section').eq(nextPage));
+        }
+
+
       });
     }
   },
@@ -125,10 +147,8 @@ Controllers = {
 // View
 View = {
 
-  createOverlay: function() {
-    $('#map-overlay').remove();
-    var overlay = '<div id="map-overlay"><div id="overlay-content"></div></div>';
-    $('.canvas').append(overlay);
+  emptySidebar: function() {
+    $('.sidebar .content').empty();
   },
 
   removeOverlay: function() {
@@ -136,25 +156,28 @@ View = {
   },
 
   overlayContent: function(arr) {
-    View.createOverlay();
-    var $overlay = $('#overlay-content');
+    View.emptySidebar();
+    var $sidebar = $('.sidebar .content');
     $.each(arr, function(){
       var section = Utility.getDataAttr($(this), 'section'),
-          type = Utility.getDataAttr($(this), 'type'),
           page = Utility.getDataAttr($(this), 'page');
 
       // add section to map-overlay
-      $overlay.append($(this));
+      $sidebar.append($(this));
 
       switch (section) {
         case 'intro':
-          $(this).append('<a href="#'+page+'" title="next" class="next intro">Next</a>');
+          $(this).append('<a href="#'+page+'" title="next" class="next intro">Continue</a>');
         break;
         default:
       }
+
     });
     //show first child
-    $overlay.children().first().addClass('active');
+    $sidebar.children().first().addClass('active');
+
+    // check intro 1 for map properties
+    Utility.checkMapChanges($sidebar.children().first());
     // attach Listener
     Controllers.nextSection();
 
@@ -296,7 +319,7 @@ Utility = {
     }
 
     // check of markers
-    if(obj.attr('data-type') === 'markers') {
+    if(obj.attr('data-markers') === 'true') {
 
       $.each(obj.find('.marker'), function(){
         var name = Utility.getDataAttr($(this), 'title'),
@@ -310,6 +333,27 @@ Utility = {
         Controllers.google.clickMarker(marker);
 
       });
+    }
+
+    // check for overlay
+    if(obj.attr('data-type') === 'overlay') {
+
+      var overlayImage = 'images/' + Utility.getDataAttr(obj, 'overlay'),
+          swBound = Utility.getDataAttr(obj, 'swBound'),
+          neBound = Utility.getDataAttr(obj, 'neBound');
+
+      swBound = swBound.split(',');
+      neBound = neBound.split(',');
+
+      swBound = Utility.newLatLng(swBound[0], swBound[1]);
+      neBound = Utility.newLatLng(neBound[0], neBound[1]);
+
+      var bounds = new google.maps.LatLngBounds(swBound, neBound);
+      var overlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
+      overlay.setMap(Experience.map);
+
+      Controllers.google.clickOverlay(overlay);
+
     }
   },
 

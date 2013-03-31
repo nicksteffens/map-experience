@@ -24,3 +24,18 @@ EIGHT REGIONS OF ENDEMISM
   Need locations for this.
 
 
+
+
+TODO's:
+-------
+
+1. Marker images
+  i. Site
+  ii. Bird
+  iii. Video
+  iv. Video Journals
+
+2. Map Overlays (Faked or Real)
+3. Site Module (Red Coloring)
+4. Video Module (Blue)
+

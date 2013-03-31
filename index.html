@@ -7,24 +7,25 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="content">
+    <div class="info disabled">
 
-      <div id="intro" data-zoom="4" data-position="-1.044864,-55.15625">
+      <div id="intro" data-zoom="4" data-position="-8.02745,-56.85">
 
-        <div class="section" data-page="1" data-type="text" data-section="intro">
+        <div class="section" data-page="1" data-type="overlay" data-section="intro" data-overlay="overlay.amazonia.png" data-swBound="-18.041526,-78.886719" data-neBound="8.451021,-45.337109">
          <div class="description">
+            <h2>Intro:&nbsp;&nbsp;Amazonia</h2>
             <p>Amazonia is the largest, most diverse rainforest on Earth. One tenth of the world’s plant and animal species live here—including one out of every five bird species!</p>
           </div>
 
         </div>
 
-        <div class="section" data-page="2" data-type="text" data-section="intro" data-zoom="5" data-position="-1.044864,-55.15625">
+        <div class="section" data-page="2" data-type="overlay" data-section="intro" data-position="-4.565474,-64.6875" data-zoom="5" data-overlay="overlay.endemism.png" data-swBound="-18.041526,-78.886719" data-neBound="8.451021,-45.337109">
           <div class="description">
             <p>The vast diversity of Amazonia is currently divided into eight gigantic Areas of Endemism—regions that contain groups of plants and animals found nowhere else on Earth!</p>
           </div>
         </div>
 
-        <div class="section" data-page="3" data-type="text" data-section="intro"  data-position="-1.794293,-66.640472">
+        <div class="section" data-page="3" data-type="text" data-section="intro" data-zoom="8" data-position="-2.037534,-66.516602">
           <div class="description">
             <p>Travel up Brazil’s Rio Japurá and its tributaries with our team to discover which birds live in a little-explored area where two Areas of Endemism meet—the Napo and the Imerí.</p>
 
@@ -32,14 +33,20 @@
           </div>
         </div>
 
-        <div class="section" data-page="4" data-type="markers" data-section="intro">
+        <div class="section" data-page="4" data-type="text" data-markers="true" data-section="intro">
+
+          <!-- Todo:
+
+          1. Redo how the overlay works it should be its only element overlays the map instead of being a map overlay.
+          2. After that make sure it disappears when a user goes into a site / video  -->
+
           <div class="description">
             <p>Explore the map to view Field Museum scientist Jason Weckstein’s video journals of our experiences along the way, and take a look—and listen—to the birds we found at each of at our three study sites.</p>
 
             <p>You’ll learn about the fascinating feeding and breeding habits of some Amazonian species and discover how rivers may impact their evolution.</p>
           </div>
 
-          <ul class="markers">
+          <ul class="markers disabled">
             <li class="marker" data-position="-1.794293,-66.640472" data-marker-type="video" data-video-player="vimeo" data-url="http://vimeopro.com/fieldmuseum/amazonian-birds/video/50315674" data-title="Our Journey Begins">Our Journey Begins</li>
 
             <li class="marker" data-position="-1.434293,-65.440472" data-marker-type="video" data-video-player="vimeo" data-url="http://vimeopro.com/fieldmuseum/amazonian-birds/video/50320303" data-title="A River Village">A River Village</li>
@@ -129,22 +136,41 @@
 
     </div>
 
-    <div class="canvas">
 
-      <div id="map-canvas"></div>
+    <div class="user-interface">
+      <!-- Header -->
+      <div class="row header">
+        <!-- <div class="border-top"></div> -->
+        <div class="column">
+          <h1 class="font-red">Studying Birds in the Brazilian Amazon</h1>
+          <p class="font-grey">John Bates &amp; Jason Weckstein</p>
+        </div>
+
+      </div>
+      <!-- End of Header -->
+
+      <div class="row canvas">
+        <!-- map -->
+        <div id="map-canvas" class="column"></div>
+
+        <!-- sidebar -->
+        <div class="column sidebar">
+
+          <img src="images/interface-bird.jpg" alt="" />
+
+          <div class="content">
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <!-- End of canvas -->
 
     </div>
-
-    <div class="debugger disabled">
-        <button class="show-overlay">Show-Overlay</button>
-        <button class="reset">Reload</button>
-        <button class="close-overlay">Close-Overlay</button>
-        <button class="addMarker">Add Marker</button>
-      </div>
-
-
-
-
+    <!-- End of user-interface -->
 
     <!-- Scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
