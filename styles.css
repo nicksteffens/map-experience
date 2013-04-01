@@ -262,6 +262,24 @@ html, body {
   .overlay .video {background: url(images/button.video.png) 0 0 no-repeat; bottom:100px;}
   .overlay .audio {background: url(images/button.song.png) 0 0 no-repeat; bottom:45px;}
 
+  /*for multiple songs*/
+  .overlay .audio.multiple {
+    position: relative;
+    left:40px;
+    right:auto;
+    bottom: auto;
+    margin:10px 0;
+    padding:6px 0 14px 81px;
+    width:100px;
+    height:21px;
+    text-indent: 0;
+    background: url(images/button.song-custom.png) 0 0 no-repeat;
+    color:#fff;
+    text-decoration: none;
+    font: 18px 'oswaldbook';
+    vertical-align: center;
+  }
+
 
 #media .content {
   width:753px;

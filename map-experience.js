@@ -135,7 +135,7 @@ Controllers = {
             title = $(this).text();
 
         if(player === 'vimeo') {
-            View.attachVimeo(video, title);
+            View.attachVimeo(url, title);
         }
 
       }
@@ -222,7 +222,7 @@ View = {
 
       var name = Utility.getDataAttr($(this), 'title');
           pos = Utility.getDataAttr($(this), 'position'),
-          section = Utility.getDataAttr($(this).parent('.markers').parent('div'), 'section');
+          site = Utility.getDataAttr($(this), 'site');
 
           img = Utility.getDataAttr($(this), 'marker-image');
           pos = pos.split(',');
@@ -232,28 +232,29 @@ View = {
       var marker = Utility.newMarker(name, pos, img);
 
       // push to global
-      switch (section) {
-        case 'one':
+      switch (site) {
+        case '1':
           Experience.markers.sites.one.push(marker);
         break;
-        case 'two':
+        case '2':
           Experience.markers.sites.two.push(marker);
         break;
-        case 'three':
+        case '3':
           Experience.markers.sites.three.push(marker);
         break;
         default:
         // do nothing
       }
-      // sets listener
+      // sets listeners
       Controllers.google.clickMarker(marker);
+
     });
   },
 
   species: function(obj) {
     View.createSpeciesViewer();
     // append to Species Viewer
-    var content = obj;
+    var content = obj.clone();
     $('#species.overlay').append(content);
     $('#species.overlay').removeClass('disabled');
     Controllers.speciesMedia();
@@ -282,6 +283,10 @@ View = {
   },
 
   attachVimeo: function(url, name) {
+    // TODO:
+    // Add browser check for FF as it sucks with MP3's need to add
+    // attachXeno player fall back. Add data-xeno to all audio files
+
     View.createMediaViewer();
     var id = url.split('video/'),
         videoId = id[1],
@@ -299,7 +304,7 @@ View = {
 
   attachAudioPlayer: function(url, name) {
     View.createMediaViewer();
-    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><audio controls>'+
+    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><audio controls autoplay>'+
                     '<source src="'+url+'">'+
                     'Your Browser doesn\'t support the audio element.'+
                   '</audio></div>';
