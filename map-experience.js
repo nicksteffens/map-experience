@@ -27,6 +27,11 @@ Experience = {
     Experience.mapOptions = {
       zoom: parseInt(Utility.getDataAttr($('#intro'), 'zoom')),
       center: Experience.startingPoint,
+      // zoom limits
+      zoomControl: false,
+      scrollwheel: false,
+      minZoom: 4,
+      maxZoom: 14,
       // UI specific stuff
       disableDefaultUI: true,
       // map type
