@@ -27,11 +27,11 @@ Experience = {
     Experience.mapOptions = {
       zoom: parseInt(Utility.getDataAttr($('#intro'), 'zoom')),
       center: Experience.startingPoint,
-      // zoom limits
+      // map Control limitations
       zoomControl: false,
       scrollwheel: false,
-      minZoom: 4,
-      maxZoom: 14,
+      draggable: false,
+      disableDoubleClickZoom: true,
       // UI specific stuff
       disableDefaultUI: true,
       // map type
@@ -76,6 +76,7 @@ Controllers = {
     clickMarker: function(marker) {
       google.maps.event.addListener(marker, 'click', function() {
         Utility.marker.getAction(marker.title);
+
       });
     },
 
@@ -87,7 +88,8 @@ Controllers = {
           $('.sidebar .section.active').removeClass('active');
 
           // remove overlay
-          overlay.setMap(null);
+          if(overlay.page < 3) overlay.setMap(null);
+
 
           // next page
           var nextPage = parseInt(overlay.page);
@@ -95,6 +97,11 @@ Controllers = {
 
           //check for changes
           Utility.checkMapChanges($('.section').eq(nextPage));
+        }
+
+        // remove listener for overlay
+        if(overlay.page === '4') {
+          google.maps.event.removeListener(overlay, 'click');
         }
 
 
@@ -163,6 +170,7 @@ Controllers = {
     $('.back-to-region').on({
       click: function() {
         View.showRegion();
+        Experience.overlay.setOpacity(100);
       }
     });
   }
@@ -451,10 +459,10 @@ Utility = {
       neBound = Utility.newLatLng(neBound[0], neBound[1]);
 
       var bounds = new google.maps.LatLngBounds(swBound, neBound);
-      var overlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
-      overlay.setMap(Experience.map);
+      Experience.overlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
+      Experience.overlay.setMap(Experience.map);
 
-      Controllers.google.clickOverlay(overlay);
+      Controllers.google.clickOverlay(Experience.overlay);
 
     }
 
@@ -492,6 +500,8 @@ Utility = {
           });
 
           $('.back-to-region').removeClass('disabled');
+
+          Experience.overlay.setOpacity(0);
 
           Controllers.backToRegion();
 

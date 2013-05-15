@@ -1,41 +1,19 @@
-DOCUMENTATION
+1)  Maps:  Need to fix stuff that we talked about in earlier emails, such as:
+ labeling Areas of Endemism, getting borders correct, locking folks out at a certain level in the three study site maps so that they don't get the "Sorry, we have no imagery here" message when they zoom in closer.
 
-Overlays:
-https://developers.google.com/maps/documentation/javascript/overlays
+ ** Locked out Users from Zoom / Pan **
+ ** Updated Overlays **
 
-  See for map markers and info windows.
+2)  Study Sites:  Few things here:
+  You'll see that the scientists now want us to draw a "trail" along each site and string the pinpoints in a specific order at each site.  Basically, the trails should begin at the coordinates given, then trail off into the dark green section of each map (the light green sections are flooded areas, and the guys could only collect in the dark green areas where dry ground could be found.)  The trails really don't have to go any particular direction, just thick colored lines that kind of curve into the forest.
 
+  The birds have a particular order only in that certain species will be found nearer the trailhead along the riverbanks, while other species are located farther inland.
+  Also, can we make the site videos another navigation box like the "Back to region" box?
 
-  For Introduction:
-  Use: Custom overlays to get the look and feel that we want
+3)  Bird Audio:  Couple of issues here...
+  The scientists have selected many new birdcall audio files because the Xeno-canto site just got a lot of new clips, so we'll have to update the links you're using.  I've given the urls for the new calls.
 
-Eventlisteners:
-https://developers.google.com/maps/documentation/javascript/events
+  You'll note that some of these are "Calls" and some of these are "Songs" -- so this information will change how the red "Song" button reads for each species page.  (The scientists are really picky about this.)
 
-  See of handling events.
-
-
-
-
-
-
-EIGHT REGIONS OF ENDEMISM
-
-  Need locations for this.
-
-
-
-
-TODO's:
--------
-
-1. Marker images
-  i. Site
-  ii. Bird
-  iii. Video
-  iv. Video Journals
-
-2. Map Overlays (Faked or Real)
-3. Site Module (Red Coloring)
-4. Video Module (Blue)
-
+  Each audio clip page needs to have a credit at the bottom of it, as you'll see in the edits.
+  The guys aren't fond of the blank page with just the audio control bar on it.  First choice would be to grab the image of the sonogram from each clip and make this into a background image behind the audio control bar.  If you can't get a decent image of these sonograms, then I guess we'll have to re-use the image of each bird as the background image for these bars.  The only problem we'll have is for Site #3: Musician Wren, in that we only have a photo of the Brazil species.  If this is the direction we have to go, let me know, and Jason will try to find photos or illustrations of the Ecuador and Peru species.
