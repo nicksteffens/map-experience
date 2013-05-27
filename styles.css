@@ -269,6 +269,8 @@ html, body {
 
   .overlay .video {background: url(images/button.video.png) 0 0 no-repeat; bottom:100px;}
   .overlay .audio {background: url(images/button.song.png) 0 0 no-repeat; bottom:45px;}
+  .overlay .audio.call {background: url(images/button.call.png) 0 0 no-repeat; bottom:45px;}
+  .overlay .audio.lekking {background: url(images/button.lekking.png) 0 0 no-repeat; bottom:45px;}
 
   /*for multiple songs*/
   .overlay .audio.multiple {
@@ -311,6 +313,15 @@ html, body {
   margin:0 auto;
 }
 
+#media .xeno-player {
+  position: relative;
+  top:50%;
+  display:block;
+  width:500px;
+  height:210px;
+  margin:-105px auto;
+}
+
 #media h2 {
   position:absolute;
   top:15px;
@@ -328,6 +339,8 @@ html, body {
   opacity:0.8;
   z-index:5;
 }
+
+
 
 
 

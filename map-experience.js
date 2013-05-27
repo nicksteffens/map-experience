@@ -171,7 +171,7 @@ Controllers = {
       click: function() {
         View.showRegion();
         // turn region overlay back on
-        Experience.overlay.setOpacity(100);
+        Experience.overlay.setMap(Experience.map);
         // remove site overlay
         Experience.siteOverlay = null;
       }
@@ -318,9 +318,6 @@ View = {
   },
 
   attachVimeo: function(url, name) {
-    // TODO:
-    // Add browser check for FF as it sucks with MP3's need to add
-    // attachXeno player fall back. Add data-xeno to all audio files
 
     View.createMediaViewer();
     var id = url.split('video/'),
@@ -331,12 +328,17 @@ View = {
 
   },
 
-  attachXeno: function(id, name) {
+  // XENO AUDIO
+  attachXeno: function(url, name) {
     View.createMediaViewer();
-    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><iframe src="http://www.xeno-canto.org/embed.php?XC='+id+'&simple=1" scrolling="no" frameborder="0" width="170" height="58"></iframe></div>';
+    var id = url.split('http://www.xeno-canto.org/');
+        id = id[1];
+
+    var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><iframe class="xeno-player" src="http://www.xeno-canto.org/embed.php?XC='+id+'" scrolling="no" frameborder="0" width="500" height="210"></iframe></div>';
     $('#media').append(player);
   },
 
+  // HTML 5
   attachAudioPlayer: function(url, name) {
     View.createMediaViewer();
     var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><audio controls autoplay>'+
@@ -536,7 +538,7 @@ Utility = {
           $('.back-to-region').removeClass('disabled');
 
 
-          Experience.overlay.setOpacity(0);
+          Experience.overlay.setMap(null);
 
           Controllers.backToRegion();
 
