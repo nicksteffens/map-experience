@@ -182,6 +182,14 @@ html, body {
   cursor:pointer;
 }
 
+.site-video {
+  position:absolute;
+  bottom:90px;
+  right:323px;
+  z-index: 2;
+  cursor: pointer;
+}
+
 .overlay {
   position: absolute;
   top:80px;

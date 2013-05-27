@@ -170,7 +170,21 @@ Controllers = {
     $('.back-to-region').on({
       click: function() {
         View.showRegion();
+        // turn region overlay back on
         Experience.overlay.setOpacity(100);
+        // remove site overlay
+        Experience.siteOverlay = null;
+      }
+    });
+  },
+
+  siteVideo: function(obj) {
+    $('.site-video').removeClass('disabled');
+    $('.site-video').on({
+      click: function() {
+        if(obj.player === 'vimeo') {
+          View.attachVimeo(obj.video, obj.title);
+        }
       }
     });
   }
@@ -226,6 +240,14 @@ View = {
     // createMarkers
     View.siteMarkers(markers);
 
+    // create siteVideo off the obj dataSet
+    var siteVideo = {
+      video: Utility.getDataAttr(obj, 'site-video-url'),
+      player: Utility.getDataAttr(obj, 'site-video-player'),
+      title: Utility.getDataAttr(obj, 'site-video-title')
+    };
+
+    Controllers.siteVideo(siteVideo);
     // update map
     Utility.checkMapChanges(obj);
   },
@@ -330,6 +352,8 @@ View = {
 
     // hide back2 button
     $('.back-to-region').addClass('disabled');
+    // hide site-video button
+    $('.site-video').addClass('disabled');
 
     // show region markers
     $.each(Experience.markers.region, function() {
@@ -459,10 +483,20 @@ Utility = {
       neBound = Utility.newLatLng(neBound[0], neBound[1]);
 
       var bounds = new google.maps.LatLngBounds(swBound, neBound);
-      Experience.overlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
-      Experience.overlay.setMap(Experience.map);
 
-      Controllers.google.clickOverlay(Experience.overlay);
+      if(obj.attr('id') === undefined ) {
+
+        Experience.overlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
+        Experience.overlay.setMap(Experience.map);
+
+        Controllers.google.clickOverlay(Experience.overlay);
+
+      } else {
+        Experience.siteOverlay = new google.maps.GroundOverlay(overlayImage, bounds, {page: obj.attr('data-page'), section: obj.attr('data-section')});
+
+        Experience.siteOverlay.setMap(Experience.map);
+
+      }
 
     }
 
@@ -501,9 +535,11 @@ Utility = {
 
           $('.back-to-region').removeClass('disabled');
 
+
           Experience.overlay.setOpacity(0);
 
           Controllers.backToRegion();
+
 
         break;
         case 'species':
