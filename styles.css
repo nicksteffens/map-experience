@@ -231,7 +231,8 @@ html, body {
       display: block;
       margin:45px 0 0 43px;
     }
-    .bird-img .credit {
+    .bird-img .credit,
+    #media p.credit {
       position: absolute;
       display: block;
       bottom:10px;
@@ -240,6 +241,8 @@ html, body {
       color:#959595;
       font-size: 12px;
     }
+
+      #media p.credit {z-index: 1;}
 
   .overlay .information {
     margin:32px 32px 32px 535px;
@@ -299,6 +302,7 @@ html, body {
 
 #media.overlay {
   z-index:6;
+  position: absolute;
 }
 
 #media .video-player {
@@ -329,6 +333,7 @@ html, body {
   text-align: center;
 }
 
+
 .overlay-bg {
   position: absolute;
   top:0;
@@ -340,7 +345,7 @@ html, body {
   z-index:5;
 }
 
-
+.next {color:#fff;}
 
 
 

@@ -64,8 +64,9 @@ Controllers = {
       click: function(e) {
         e.preventDefault();
         $('.sidebar .section.active').removeClass('active');
-        var nextPage = parseInt($(this).attr('href').slice('1'));
+        var nextPage = parseInt($(this).attr('href'));
         $('.sidebar .section').eq(nextPage).addClass('active');
+
         Utility.checkMapChanges($('.section').eq(nextPage));
 
       }
@@ -158,10 +159,11 @@ Controllers = {
         e.preventDefault();
         var player = Utility.getDataAttr($(this), 'player'),
             url = $(this).attr('href'),
-            title = $(this).text();
+            title = $(this).text(),
+            credit = Utility.getDataAttr($(this), 'credit');
 
-        if(player === 'html5') View.attachAudioPlayer(url, title);
-        if(player === 'xeno') View.attachXeno(url, title);
+        if(player === 'html5') View.attachAudioPlayer(url, title, credit);
+        if(player === 'xeno') View.attachXeno(url, title, credit);
       }
     });
   },
@@ -309,8 +311,9 @@ View = {
     Experience.map.setCenter(location);
   },
 
-  createMediaViewer: function() {
+  createMediaViewer: function(credit) {
     $('#media .content').remove();
+    $('#media .credit').empty().text(credit);
     $('#media').removeClass('disabled');
     $('.overlay-bg').removeClass('disabled');
     // add Listener
@@ -329,8 +332,8 @@ View = {
   },
 
   // XENO AUDIO
-  attachXeno: function(url, name) {
-    View.createMediaViewer();
+  attachXeno: function(url, name, credit) {
+    View.createMediaViewer(credit);
     var id = url.split('http://www.xeno-canto.org/');
         id = id[1];
 
@@ -339,8 +342,8 @@ View = {
   },
 
   // HTML 5
-  attachAudioPlayer: function(url, name) {
-    View.createMediaViewer();
+  attachAudioPlayer: function(url, name, credit) {
+    View.createMediaViewer(credit);
     var player = '<div class="content"><h2 class="font-blue">'+name+'</h2><audio controls autoplay>'+
                     '<source src="'+url+'">'+
                     'Your Browser doesn\'t support the audio element.'+
@@ -473,6 +476,8 @@ Utility = {
 
     // check for overlay
     if(obj.attr('data-type') === 'overlay') {
+      // remove Current Overlay
+      if( Experience.overlay !== undefined) Experience.overlay.setMap(null);
 
       var overlayImage = 'images/' + Utility.getDataAttr(obj, 'overlay'),
           swBound = Utility.getDataAttr(obj, 'swBound'),
