@@ -162,6 +162,8 @@ Controllers = {
             title = $(this).text(),
             credit = Utility.getDataAttr($(this), 'credit');
 
+        if($(this).hasClass('multiple') === true) title = Utility.getDataAttr($(this), 'title');
+
         if(player === 'html5') View.attachAudioPlayer(url, title, credit);
         if(player === 'xeno') View.attachXeno(url, title, credit);
       }

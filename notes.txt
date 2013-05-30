@@ -23,80 +23,92 @@ You’ll learn about the fascinating feeding and breeding habits of some Amazoni
 
 5)  SITE #1:  Most of this is in the original Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted.
 
-A)  Video Title:  The word "Netting" should have a capital N
+    A)  Video Title:  The word "Netting" should have a capital N
 
 B)  Map:  The trails here are super fat compared to the trails on the other two sites.  Also, they go through water rather than staying on land.  The Bi-colored Antbird and Fulvous Shrike-Tanager need to flip flop places.  See attached new Skitch.
 
-C)  White-flanked Antwren:  On the photo popup, if you can't read the Skitch, the first paragraph should be: 
+  C)  White-flanked Antwren:  On the photo popup, if you can't read the Skitch, the first paragraph should be: 
 
-Mixed-species flocks often specialize on certain resources in specific areas of the forest.  For example, understory flocks typically feed on insects and other invertebrates, whereas canopy flocks can be made up of either fruit- or insect-eating bird species.
+  Mixed-species flocks often specialize on certain resources in specific areas of the forest.  For example, understory flocks typically feed on insects and other invertebrates, whereas canopy flocks can be made up of either fruit- or insect-eating bird species.
 
-The red box should say Song, not Call. 
+  The red box should say Song, not Call. 
 
-On the audio popup, it should say Song, not Call.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/88611
+  On the audio popup, it should say Song, not Call.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/88611
 
-D)  Green-and-gold Tanager:  On the photo popup, if you can't read the Skitch, the first paragraph should be:
-Birds in mixed-species flocks may face less competition than those in flocks made up of one species because in a mixed flock, each species has evolved to forage in a different niche.
+  D)  Green-and-gold Tanager:  On the photo popup, if you can't read the Skitch, the first paragraph should be:
+  Birds in mixed-species flocks may face less competition than those in flocks made up of one species because in a mixed flock, each species has evolved to forage in a different niche.
 
-The red box should say Song, not Call. 
+  The red box should say Song, not Call. 
 
-On the audio popup, it should say:   Green-and-gold Tanager Dawn Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/86318
+  On the audio popup, it should say:   Green-and-gold Tanager Dawn Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/86318
 
-Video should say: Green-and-gold Tanager Video
+  Video should say: Green-and-gold Tanager Video
 
-E)  Cinnamon-rumped Foliage Gleaner:  The scientific name is still wrong.  It's Philydor pyrrhodes. Also, in the second paragraph, the word "gleaners" should be singular, with no "s" at the end.  Please look at the original Skitch again.
+  E)  Cinnamon-rumped Foliage Gleaner:  The scientific name is still wrong.  It's Philydor pyrrhodes. Also, in the second paragraph, the word "gleaners" should be singular, with no "s" at the end.  Please look at the original Skitch again.
 
-Also, the audio links to the wrong file.  It should go to http://www.xeno-canto.org/6020 
+  Also, the audio links to the wrong file.  It should go to http://www.xeno-canto.org/6020 
 
-F)  Bi-colored Antbird:  Please look at the original Skitch again.  The words Varzea and the two occurrences of Terre Firme should all be italicized.  There's a period missing at the end of the second paragraph, and in case you can't read it, the new third paragraph is:
-Listen to the calls of these birds and the sound of swarming ants in the background.
+  F)  Bi-colored Antbird:  Please look at the original Skitch again.  The words Varzea and the two occurrences of Terre Firme should all be italicized.  There's a period missing at the end of the second paragraph, and in case you can't read it, the new third paragraph is:
+  Listen to the calls of these birds and the sound of swarming ants in the background.
 
-G)  Fulvous Shrike-Tanager:  Please look at the original Skitch again for the location of changes to the second paragraph of the caption, which are as follows (delete "a" and make "alarm call" plural to "alarm calls"):  The pair also acts as sentinels, giving sharp alarm calls when predators are spotted—or when they want to “cry wolf” and frighten competitors away from a meal.
+  G)  Fulvous Shrike-Tanager:  Please look at the original Skitch again for the location of changes to the second paragraph of the caption, which are as follows (delete "a" and make "alarm call" plural to "alarm calls"):  The pair also acts as sentinels, giving sharp alarm calls when predators are spotted—or when they want to “cry wolf” and frighten competitors away from a meal.
 
-Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/56092
+  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/56092
 
-H)  Barred Forest Falcon:  In the caption, the red box should say Call, not Song. 
+  H)  Barred Forest Falcon:  In the caption, the red box should say Call, not Song. 
 
-On the audio popup, it should say:   Barred Forest Falcon Call, not Song.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/107625
+  On the audio popup, it should say:   Barred Forest Falcon Call, not Song.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/107625
 
 ===============================
 
 6)  SITE #2:  Again, much of this is in the old Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted. 
-A)  Video:  You are still linking to the wrong video here (Maraa instead of Acanui).  See original Skitch, video should link to https://vimeo.com/50320311.
-B)  Map:  The first pinpoint needs to be moved so it's on the trail at the riverbend, and all the birds are all in the wrong order. Also, the second paragraph should read: 
-Giant trees in the forest interior here produce Brazil nuts, a source of income for villagers who live in the nearby town. With their permission, we used their harvesting trails to enter the forest.  (See old Skitch or new one attached here for all.) 
-C)  Golden-Headed Manakin:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/27784
-D)  Black-necked Red Cotinga:  As per the original Skitch, please correct the scientific name ("i" not "e" between c and r), like so:  Phoenicircus nigricollis
-E)  White-crowned Manakin:  As per the original Skitch, please correct the scientific name to:  Pipra pipra.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/77042
-F)  Blue-crowned Manakin:  The video title should read: Blue-crowned Manakin Video.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/94853
-G)  Amazonian Royal Flycatcher:  As per original Skitch, please add the following phrase in red to the beginning of the second paragraph and lower-case the 'b' in 'both':
-In courtship, both males and females fan their crests, weave their heads back and forth, flick their tongues like a snake, and occasionally lock bills.
-H)  Blue-crowned Motmot:  On the audio popup, it should say:   Blue-crowned Motmot Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/46539
 
-7)  SITE #3:  Again, much of this is in the old Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted. 
-A)  Video:  The video title is still wrong.  It should read: Mapping Habitats Near Maraã.
-B)  Map:  The first three pinpoints need to be pushed back so that Pinpoint #1 falls on the trail rather than the river, and all birds are all in the wrong order (See new Skitch attached here.)  Also, all of the text changes in the paragraph on the right were missed, including italicizing foreign words, inserting missing periods, and inserting several new words/phrases.  I unfortunately don't have time to retype all these into the new Skitch, so just please see the old one in the Dropbox.
+  A)  Video:  You are still linking to the wrong video here (Maraa instead of Acanui).  See original Skitch, video should link to https://vimeo.com/50320311.
 
-C)  Yellow-billed Jacamar:  You missed the text change in the second paragraph of the caption (see red): 
-In fact, major rivers separate the Yellow-billed Jacamar from it’s nearest relative, the Blue-cheeked Jacamar—illustrating the role rivers may play in the evolution of so many different Amazonian species.
+  B)  Map:  The first pinpoint needs to be moved so it's on the trail at the riverbend, and all the birds are all in the wrong order. Also, the second paragraph should read: 
+  Giant trees in the forest interior here produce Brazil nuts, a source of income for villagers who live in the nearby town. With their permission, we used their harvesting trails to enter the forest.  (See old Skitch or new one attached here for all.) 
 
-The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/51841
+  C)  Golden-Headed Manakin:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/27784
 
-D)  Black-headed Parrot:  You missed several changes in the caption text, including italicizing foreign words and a word change.  Short on time, so please look in the Dropbox file for the original Skitch.
+  D)  Black-necked Red Cotinga:  As per the original Skitch, please correct the scientific name ("i" not "e" between c and r), like so:  Phoenicircus nigricollis
 
-Also, the video page should be labeled: Black-headed Parrot Video
+  E)  White-crowned Manakin:  As per the original Skitch, please correct the scientific name to:  Pipra pipra.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/77042
 
-The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70285
+  F)  Blue-crowned Manakin:  The video title should read: Blue-crowned Manakin Video.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/94853
 
-E)  Cream-colored Woodpecker:   As noted in the original Skitch, there's a newly added third paragraph, which is:
-We don't yet know if these woodpecker populations are different, but future genetic studies will clarify their evolutionary relationships.
+  G)  Amazonian Royal Flycatcher:  As per original Skitch, please add the following phrase in red to the beginning of the second paragraph and lower-case the 'b' in 'both':
+  In courtship, both males and females fan their crests, weave their heads back and forth, flick their tongues like a snake, and occasionally lock bills.
 
-F)  Musician Wren:  for the red box, Brazil is first, followed by Ecuador, then Peru.  Then on the audio popups, they should be labeled: Musician Wren Song (Brazil), Musician Wren Song (Ecuador), Muscian Wren Song (Peru). 
+  H)  Blue-crowned Motmot:  On the audio popup, it should say:   Blue-crowned Motmot Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/46539
 
-G)  Yellow-browed Antbird:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/81767
+======================
 
-H)  Common Scale-backed Antbird:  You missed a change in the first paragraph -- please delete the word "previous" at the end of the third line. 
+  7)  SITE #3:  Again, much of this is in the old Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted. 
 
-Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70138
+  A)  Video:  The video title is still wrong.  It should read: Mapping Habitats Near Maraã.
+
+  B)  Map:  The first three pinpoints need to be pushed back so that Pinpoint #1 falls on the trail rather than the river, and all birds are all in the wrong order (See new Skitch attached here.)  Also, all of the text changes in the paragraph on the right were missed, including italicizing foreign words, inserting missing periods, and inserting several new words/phrases.  I unfortunately don't have time to retype all these into the new Skitch, so just please see the old one in the Dropbox.
+
+  C)  Yellow-billed Jacamar:  You missed the text change in the second paragraph of the caption (see red): 
+  In fact, major rivers separate the Yellow-billed Jacamar from it’s nearest relative, the Blue-cheeked Jacamar—illustrating the role rivers may play in the evolution of so many different Amazonian species.
+
+  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/51841
+
+    D)  Black-headed Parrot:  You missed several changes in the caption text, including italicizing foreign words and a word change.  Short on time, so please look in the Dropbox file for the original Skitch.
+
+    Also, the video page should be labeled: Black-headed Parrot Video
+
+    The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70285
+
+    E)  Cream-colored Woodpecker:   As noted in the original Skitch, there's a newly added third paragraph, which is:
+    We don't yet know if these woodpecker populations are different, but future genetic studies will clarify their evolutionary relationships.
+
+  F)  Musician Wren:  for the red box, Brazil is first, followed by Ecuador, then Peru.  Then on the audio popups, they should be labeled: Musician Wren Song (Brazil), Musician Wren Song (Ecuador), Muscian Wren Song (Peru). 
+
+  G)  Yellow-browed Antbird:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/81767
+
+  H)  Common Scale-backed Antbird:  You missed a change in the first paragraph -- please delete the word "previous" at the end of the third line. 
+
+  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70138
 
 That's it -- please let me know how quickly you can get these done, and I'll then forward the final version on to the scientists for their review.  (I didn't show them this version because they really freak out when their changes get missed.)
