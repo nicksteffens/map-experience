@@ -1,114 +1,45 @@
-1)  INTERACTIVE TITLE:  It looks like you missed the new title of the interactive.  It's: Surveying Birds in the Brazilian Amazon, with the subtitle Interactive Map  These titles should apply to all pages.  See original Skitch of Screen #1 in Dropbox.
+GREG
+----
+1)  Intro Screen #2:   needs the accent marks over certain vowels in the names for the areas of Endemism.  See attached Skitch.
 
-===============================
+2)  Intro Screens #3 & #4:  please remove the highlighting below the river in the unnamed region of endemism.  Only Napo and Imeri should have the reddish highlighting over them. See attached Skitches.
 
-2)  INTRO SCREEN 2:  Many of the names for the Areas of Endemism have accent marks over their vowels that seem to have been missed.  Please refer to the attached skitch.  Also, there are body text changes missed from the first round in the text on the right.  If you can't read the attached skitch, here they are again below:
-Begin Exploring Explore the map to view Jason's video journals and site notes documenting the team's experiences along the way, and take a look—and listen—to the birds found at each of at the three study sites. 
-You’ll learn about the fascinating feeding and breeding habits of some Amazonian species and discover how rivers may impact their evolution.
+NICK
+----
+  1)  Intro Screen #4:  In the first line of the first paragraph, "Jason" should be plural:  Jason's (with an apostrophe s).  Also, in the 6th line of the first paragraph, there's an extra "at" in the sentence that needs to be deleted.  (See attached Skitch.)
 
-===============================
+=======
 
-3) INTRO SCREEN 3:  We need to drop the highlighting on the area beneath the river, since we only want to highlight the Napo and Imeri here.  Also, there are lots of body text changes that were missed in the paragraph on the right.  Please refer to the attached Skitch, but here are the text changes, just in case:
-Intro: The Napo and Imerí
-Travel up Brazil’s Rio Japurá and its tributaries with Field Museum scientists John Bates and Jason Weckstein to discover which birds live in a little-explored area where two Areas of Endemism meet—the Napo and the Imerí.
-Documenting and studying bird populations along this boundary will help the team define the range and evolutionary history of each species and better assess areas of unique diversity in need of protection.
+  2)  Site #1 Main Map:  The left trail needs to touch the river's edge, and there's still a typo in the text on the right (it's "study" not "studio").  See attached Skitch.
 
-===============================
+  A)  White-flanked Antwren:  In the first paragraph, please delete the extra space at the end of the first sentence, so that there's only one space between sentences, not two.  (See attached Skitch.)
 
-4)  INTRO SCREEN 4:  It looks like you missed all the changes for this screen.  I've reattached the original Skitch.  As you'll see, some of the pinpoints have been removed or renumbered.  Essentially Spot 10 is a new pinpoint near Spot 11, the old Spot 10 is renumbered Spot 3, and the old Spot 3 disappears.  Also, please note all the text changes in the paragraph on the right, but see below if you can't read it:
-Begin Exploring Explore the map to view Jason’s video journals and site notes documenting the team's experiences along the way, and take a look—and listen—to the birds found at each of the three study sites. 
-You’ll learn about the fascinating feeding and breeding habits of some Amazonian species and discover how rivers may impact their evolution.
+  B)  Bicolored Antbird:  Several italizations were missed in the text edits -- see Skitch.
 
-===============================
+  C)  Barred Forest Falcon:  There's a new change here -- sorry, it's been a bit of a controversy about what they want to call it, song or call, and they've decided to have it match Xenocanto's label.
 
-5)  SITE #1:  Most of this is in the original Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted.
+  The red box should say "Song" not "Call"
 
-    A)  Video Title:  The word "Netting" should have a capital N
+  Also, the Audio Popup Title should say "Barred Forest Falcon Song"
 
-B)  Map:  The trails here are super fat compared to the trails on the other two sites.  Also, they go through water rather than staying on land.  The Bi-colored Antbird and Fulvous Shrike-Tanager need to flip flop places.  See attached new Skitch.
+============
 
-  C)  White-flanked Antwren:  On the photo popup, if you can't read the Skitch, the first paragraph should be: 
+  3)  Site #2 Main Map:  The birds still need to be reordered according to the Skitch, see attached.
+  Also, the pinpoint for the Black-necked Red Continga needs to be on the other side of the trail.
 
-  Mixed-species flocks often specialize on certain resources in specific areas of the forest.  For example, understory flocks typically feed on insects and other invertebrates, whereas canopy flocks can be made up of either fruit- or insect-eating bird species.
+  A)  Golden-headed Manakin:  New change here, the red box should say "Song" not "Lekking Call"
 
-  The red box should say Song, not Call. 
+  B)  White-crowned Manakin:  the scientific name of this specie is another hotly debated issue.  They want to go back to old scientific name of Dixiphia pipra, not Pipra pipra, so that it matches the Xenocanto audio file.
 
-  On the audio popup, it should say Song, not Call.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/88611
+============
 
-  D)  Green-and-gold Tanager:  On the photo popup, if you can't read the Skitch, the first paragraph should be:
-  Birds in mixed-species flocks may face less competition than those in flocks made up of one species because in a mixed flock, each species has evolved to forage in a different niche.
+  4)  Site #3 Main Map:  The birds still need to be reordered according to the Skitch, see attached.
+  Also, there are several edits that were missed in the text on the right (see attached Skitch.)
 
-  The red box should say Song, not Call. 
+  A)  Yellow-billed Jacamar:  Sorry, I misread their notes and gave you the wrong audio link for this bird.  It should link to http://www.xeno-canto.org/61841.
 
-  On the audio popup, it should say:   Green-and-gold Tanager Dawn Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/86318
+  B)  Cream-colored Woodpecker:  looks like when you imported the new third paragraph, the beginning of the sentence got lopped off.  It should begin "We don't yet know if these woodpecker" (see attached Skitch)
 
-  Video should say: Green-and-gold Tanager Video
+  Also, it's linking to the wrong audio file.  It should be http://www.xeno-canto.org/28174
 
-  E)  Cinnamon-rumped Foliage Gleaner:  The scientific name is still wrong.  It's Philydor pyrrhodes. Also, in the second paragraph, the word "gleaners" should be singular, with no "s" at the end.  Please look at the original Skitch again.
-
-  Also, the audio links to the wrong file.  It should go to http://www.xeno-canto.org/6020 
-
-  F)  Bi-colored Antbird:  Please look at the original Skitch again.  The words Varzea and the two occurrences of Terre Firme should all be italicized.  There's a period missing at the end of the second paragraph, and in case you can't read it, the new third paragraph is:
-  Listen to the calls of these birds and the sound of swarming ants in the background.
-
-  G)  Fulvous Shrike-Tanager:  Please look at the original Skitch again for the location of changes to the second paragraph of the caption, which are as follows (delete "a" and make "alarm call" plural to "alarm calls"):  The pair also acts as sentinels, giving sharp alarm calls when predators are spotted—or when they want to “cry wolf” and frighten competitors away from a meal.
-
-  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/56092
-
-  H)  Barred Forest Falcon:  In the caption, the red box should say Call, not Song. 
-
-  On the audio popup, it should say:   Barred Forest Falcon Call, not Song.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/107625
-
-===============================
-
-6)  SITE #2:  Again, much of this is in the old Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted. 
-
-  A)  Video:  You are still linking to the wrong video here (Maraa instead of Acanui).  See original Skitch, video should link to https://vimeo.com/50320311.
-
-  B)  Map:  The first pinpoint needs to be moved so it's on the trail at the riverbend, and all the birds are all in the wrong order. Also, the second paragraph should read: 
-  Giant trees in the forest interior here produce Brazil nuts, a source of income for villagers who live in the nearby town. With their permission, we used their harvesting trails to enter the forest.  (See old Skitch or new one attached here for all.) 
-
-  C)  Golden-Headed Manakin:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/27784
-
-  D)  Black-necked Red Cotinga:  As per the original Skitch, please correct the scientific name ("i" not "e" between c and r), like so:  Phoenicircus nigricollis
-
-  E)  White-crowned Manakin:  As per the original Skitch, please correct the scientific name to:  Pipra pipra.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/77042
-
-  F)  Blue-crowned Manakin:  The video title should read: Blue-crowned Manakin Video.  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/94853
-
-  G)  Amazonian Royal Flycatcher:  As per original Skitch, please add the following phrase in red to the beginning of the second paragraph and lower-case the 'b' in 'both':
-  In courtship, both males and females fan their crests, weave their heads back and forth, flick their tongues like a snake, and occasionally lock bills.
-
-  H)  Blue-crowned Motmot:  On the audio popup, it should say:   Blue-crowned Motmot Song, not Call.  Also the audio links to the wrong file.  It should go to:  http://www.xeno-canto.org/46539
-
-======================
-
-  7)  SITE #3:  Again, much of this is in the old Skitch files in Dropbox, but I've shorthanded it again below, and added a few new comments based on the version you just submitted. 
-
-  A)  Video:  The video title is still wrong.  It should read: Mapping Habitats Near Maraã.
-
-  B)  Map:  The first three pinpoints need to be pushed back so that Pinpoint #1 falls on the trail rather than the river, and all birds are all in the wrong order (See new Skitch attached here.)  Also, all of the text changes in the paragraph on the right were missed, including italicizing foreign words, inserting missing periods, and inserting several new words/phrases.  I unfortunately don't have time to retype all these into the new Skitch, so just please see the old one in the Dropbox.
-
-  C)  Yellow-billed Jacamar:  You missed the text change in the second paragraph of the caption (see red): 
-  In fact, major rivers separate the Yellow-billed Jacamar from it’s nearest relative, the Blue-cheeked Jacamar—illustrating the role rivers may play in the evolution of so many different Amazonian species.
-
-  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/51841
-
-    D)  Black-headed Parrot:  You missed several changes in the caption text, including italicizing foreign words and a word change.  Short on time, so please look in the Dropbox file for the original Skitch.
-
-    Also, the video page should be labeled: Black-headed Parrot Video
-
-    The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70285
-
-    E)  Cream-colored Woodpecker:   As noted in the original Skitch, there's a newly added third paragraph, which is:
-    We don't yet know if these woodpecker populations are different, but future genetic studies will clarify their evolutionary relationships.
-
-  F)  Musician Wren:  for the red box, Brazil is first, followed by Ecuador, then Peru.  Then on the audio popups, they should be labeled: Musician Wren Song (Brazil), Musician Wren Song (Ecuador), Muscian Wren Song (Peru). 
-
-  G)  Yellow-browed Antbird:  The audio links to the wrong file.  It should go to: http://www.xeno-canto.org/81767
-
-  H)  Common Scale-backed Antbird:  You missed a change in the first paragraph -- please delete the word "previous" at the end of the third line. 
-
-  Also, the audio links to the wrong file.  It should go to: http://www.xeno-canto.org/70138
-
-That's it -- please let me know how quickly you can get these done, and I'll then forward the final version on to the scientists for their review.  (I didn't show them this version because they really freak out when their changes get missed.)
+  C)  Black-headed Parrot:  Several edits to the text still need to be made, so I've re-attached the Skitch

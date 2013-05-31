@@ -58,6 +58,10 @@ html, body {
   font-family: 'Helvetica-Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+em {
+  font-style: italic;
+}
+
 .disabled { display:none; }
 
 .user-interface {
