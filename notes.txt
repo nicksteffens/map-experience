@@ -1,45 +1,19 @@
-GREG
-----
-1)  Intro Screen #2:   needs the accent marks over certain vowels in the names for the areas of Endemism.  See attached Skitch.
+1)  Crosshairs:
+  It seems that white-line "crosshairs" appear across all the maps, including the intro maps as well as the site maps, when you view the interactive in Firefox.  Sometimes the horizontal line appears and disappears as you scroll up and down the site maps.  (See attached screenshots.)  The crosshairs do not appear at all when you view the interactive in Chrome or Safari.  Can we either remove the crosshairs or make them consistent on all browsers?
 
-2)  Intro Screens #3 & #4:  please remove the highlighting below the river in the unnamed region of endemism.  Only Napo and Imeri should have the reddish highlighting over them. See attached Skitches.
+  I am unable to replicate this via Mac Firefox V. 21. This could be a problem with the browser itself without being able to replicate the problem I will not be able to debug it.
 
-NICK
-----
-  1)  Intro Screen #4:  In the first line of the first paragraph, "Jason" should be plural:  Jason's (with an apostrophe s).  Also, in the 6th line of the first paragraph, there's an extra "at" in the sentence that needs to be deleted.  (See attached Skitch.)
+2)  Main Intro Maps Screen 3 -- The Napo & the Imeri:  Please change the first paragraph of this intro text on the right side of the map to read:
 
-=======
+      Travel up Brazil’s Rio Japurá and its tributaries with Field Museum scientists John Bates and Jason Weckstein and Goeldi Museum scientist Alex Aleixo to discover which birds live in a little-explored area where two Areas of Endemism meet—the Napo and the Imerí.
 
-  2)  Site #1 Main Map:  The left trail needs to touch the river's edge, and there's still a typo in the text on the right (it's "study" not "studio").  See attached Skitch.
+3)  Site 1:
 
-  A)  White-flanked Antwren:  In the first paragraph, please delete the extra space at the end of the first sentence, so that there's only one space between sentences, not two.  (See attached Skitch.)
+a)  White-flanked Antwren:  Please move the pinpoint for this bird to the left about a quarter inch, so that it sits closer to the red line of the trail, rather than on the river bend.
 
-  B)  Bicolored Antbird:  Several italizations were missed in the text edits -- see Skitch.
+b)  Bicolored Antbird:  Please change first paragraph to read:
+Mixed-species flocks also specialize in certain habitats. Some search for food in seasonally flooded forests, while others hunt in Terra Firme (dry land) forests.
 
-  C)  Barred Forest Falcon:  There's a new change here -- sorry, it's been a bit of a controversy about what they want to call it, song or call, and they've decided to have it match Xenocanto's label.
+4)  Site 3 - Rio Acanaui:  can you change the second paragraph in the intro text on the right side of the main Site 3 map to read as follows:
 
-  The red box should say "Song" not "Call"
-
-  Also, the Audio Popup Title should say "Barred Forest Falcon Song"
-
-============
-
-  3)  Site #2 Main Map:  The birds still need to be reordered according to the Skitch, see attached.
-  Also, the pinpoint for the Black-necked Red Continga needs to be on the other side of the trail.
-
-  A)  Golden-headed Manakin:  New change here, the red box should say "Song" not "Lekking Call"
-
-  B)  White-crowned Manakin:  the scientific name of this specie is another hotly debated issue.  They want to go back to old scientific name of Dixiphia pipra, not Pipra pipra, so that it matches the Xenocanto audio file.
-
-============
-
-  4)  Site #3 Main Map:  The birds still need to be reordered according to the Skitch, see attached.
-  Also, there are several edits that were missed in the text on the right (see attached Skitch.)
-
-  A)  Yellow-billed Jacamar:  Sorry, I misread their notes and gave you the wrong audio link for this bird.  It should link to http://www.xeno-canto.org/61841.
-
-  B)  Cream-colored Woodpecker:  looks like when you imported the new third paragraph, the beginning of the sentence got lopped off.  It should begin "We don't yet know if these woodpecker" (see attached Skitch)
-
-  Also, it's linking to the wrong audio file.  It should be http://www.xeno-canto.org/28174
-
-  C)  Black-headed Parrot:  Several edits to the text still need to be made, so I've re-attached the Skitch
+We made our way through Igapo (forests flooded with acidic blackwater) and Campinarana (low, scrubby forest growing in nutrient-poor sandy soil) and finally found a higher patch of dry land (Terra Firme).
